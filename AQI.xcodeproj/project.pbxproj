@@ -16,6 +16,8 @@
 		98BC17EE2C2C893F00B84796 /* AQITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC17ED2C2C893F00B84796 /* AQITests.swift */; };
 		98BC17F82C2C893F00B84796 /* AQIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC17F72C2C893F00B84796 /* AQIUITests.swift */; };
 		98BC17FA2C2C893F00B84796 /* AQIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC17F92C2C893F00B84796 /* AQIUITestsLaunchTests.swift */; };
+		98BC18072C2C8FDD00B84796 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC18062C2C8FDD00B84796 /* LocationManager.swift */; };
+		98BC18092C2C90F900B84796 /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC18082C2C90F900B84796 /* LocationManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		98BC17F32C2C893F00B84796 /* AQIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AQIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BC17F72C2C893F00B84796 /* AQIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIUITests.swift; sourceTree = "<group>"; };
 		98BC17F92C2C893F00B84796 /* AQIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		98BC18062C2C8FDD00B84796 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		98BC18082C2C90F900B84796 /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 				98BC17D62C2C893E00B84796 /* AppDelegate.swift */,
 				98BC17D82C2C893E00B84796 /* SceneDelegate.swift */,
 				98BC17DA2C2C893E00B84796 /* ViewController.swift */,
+				98BC18062C2C8FDD00B84796 /* LocationManager.swift */,
 				98BC17DC2C2C893E00B84796 /* Main.storyboard */,
 				98BC17DF2C2C893F00B84796 /* Assets.xcassets */,
 				98BC17E12C2C893F00B84796 /* LaunchScreen.storyboard */,
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				98BC17ED2C2C893F00B84796 /* AQITests.swift */,
+				98BC18082C2C90F900B84796 /* LocationManagerTests.swift */,
 			);
 			path = AQITests;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98BC18072C2C8FDD00B84796 /* LocationManager.swift in Sources */,
 				98BC17DB2C2C893E00B84796 /* ViewController.swift in Sources */,
 				98BC17D72C2C893E00B84796 /* AppDelegate.swift in Sources */,
 				98BC17D92C2C893E00B84796 /* SceneDelegate.swift in Sources */,
@@ -268,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98BC18092C2C90F900B84796 /* LocationManagerTests.swift in Sources */,
 				98BC17EE2C2C893F00B84796 /* AQITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
