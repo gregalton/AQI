@@ -18,6 +18,8 @@
 		98BC17FA2C2C893F00B84796 /* AQIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC17F92C2C893F00B84796 /* AQIUITestsLaunchTests.swift */; };
 		98BC18072C2C8FDD00B84796 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC18062C2C8FDD00B84796 /* LocationManager.swift */; };
 		98BC18092C2C90F900B84796 /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC18082C2C90F900B84796 /* LocationManagerTests.swift */; };
+		98BC180B2C2D78FC00B84796 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC180A2C2D78FC00B84796 /* NetworkManager.swift */; };
+		98BC180D2C2D796F00B84796 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC180C2C2D796F00B84796 /* NetworkManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		98BC17F92C2C893F00B84796 /* AQIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		98BC18062C2C8FDD00B84796 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		98BC18082C2C90F900B84796 /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
+		98BC180A2C2D78FC00B84796 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		98BC180C2C2D796F00B84796 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 				98BC17D82C2C893E00B84796 /* SceneDelegate.swift */,
 				98BC17DA2C2C893E00B84796 /* ViewController.swift */,
 				98BC18062C2C8FDD00B84796 /* LocationManager.swift */,
+				98BC180A2C2D78FC00B84796 /* NetworkManager.swift */,
 				98BC17DC2C2C893E00B84796 /* Main.storyboard */,
 				98BC17DF2C2C893F00B84796 /* Assets.xcassets */,
 				98BC17E12C2C893F00B84796 /* LaunchScreen.storyboard */,
@@ -120,6 +125,7 @@
 			children = (
 				98BC17ED2C2C893F00B84796 /* AQITests.swift */,
 				98BC18082C2C90F900B84796 /* LocationManagerTests.swift */,
+				98BC180C2C2D796F00B84796 /* NetworkManagerTests.swift */,
 			);
 			path = AQITests;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 			files = (
 				98BC18072C2C8FDD00B84796 /* LocationManager.swift in Sources */,
 				98BC17DB2C2C893E00B84796 /* ViewController.swift in Sources */,
+				98BC180B2C2D78FC00B84796 /* NetworkManager.swift in Sources */,
 				98BC17D72C2C893E00B84796 /* AppDelegate.swift in Sources */,
 				98BC17D92C2C893E00B84796 /* SceneDelegate.swift in Sources */,
 			);
@@ -275,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98BC180D2C2D796F00B84796 /* NetworkManagerTests.swift in Sources */,
 				98BC18092C2C90F900B84796 /* LocationManagerTests.swift in Sources */,
 				98BC17EE2C2C893F00B84796 /* AQITests.swift in Sources */,
 			);
