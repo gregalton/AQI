@@ -65,6 +65,11 @@ class LocationManagerTests: XCTestCase {
 class MockLocationManagerDelegate: LocationManagerDelegate {
     var lastLocation: CLLocation?
     var lastError: Error?
+    var authStatus: CLAuthorizationStatus?
+    
+    func didChangeAuthorization(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        authStatus = status
+    }
 
     func didUpdateLocation(_ location: CLLocation) {
         lastLocation = location

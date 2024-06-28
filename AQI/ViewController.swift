@@ -62,18 +62,16 @@ class ViewController: UIViewController, LocationManagerDelegate {
         super.viewDidLoad()
         setupUI()
         setupLocationManager()
-        locationManager?.requestLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        locationManager?.requestLocation()
+
     }
     
     private func setupLocationManager() {
         locationManager = LocationManager()
         locationManager?.delegate = self
-        locationManager?.requestLocation()
     }
     
     private func setupUI() {
@@ -94,17 +92,6 @@ class ViewController: UIViewController, LocationManagerDelegate {
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
         ])
-    }
-    
-    func didUpdateLocation(_ location: CLLocation) {
-        Task {
-            let result = await networkManager.fetchAQI(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            handleAQIResult(result)
-        }
-    }
-    
-    func didFailWithError(_ error: Error) {
-        showAlert(message: "Error getting your location")
     }
     
     private func handleAQIResult(_ result: Result<AQIResponse, NetworkError>) {
@@ -153,5 +140,30 @@ class ViewController: UIViewController, LocationManagerDelegate {
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)
     }
+    
+    //MARK: - LocationManager Delegates
+    func didChangeAuthorization(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            manager.requestLocation()
+        case .denied, .restricted:
+            // Handle denied or restricted status
+            showAlert(message: "Location access denied or restricted.")
+        default:
+            break
+        }
+    }
+    
+    func didUpdateLocation(_ location: CLLocation) {
+        Task {
+            let result = await networkManager.fetchAQI(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            handleAQIResult(result)
+        }
+    }
+    
+    func didFailWithError(_ error: Error) {
+        showAlert(message: "Error getting your location")
+    }
+
 }
 
