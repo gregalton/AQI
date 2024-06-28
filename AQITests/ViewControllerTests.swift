@@ -26,8 +26,6 @@ class ViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
         viewController.locationManager = mockLocationManager
         mockLocationManager.delegate = viewController
-        
-        
     }
     
     override func tearDown() {
@@ -58,19 +56,6 @@ class ViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 2, handler: nil)
     }
 
-    func testDidFailWithErrorShowsAlert() {
-        // Given
-        let error = NSError(domain: "LocationError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Test error"])
-
-        // When
-        viewController.didFailWithError(error)
-
-        // Then
-        // Here we would need to check if the alert is presented.
-        // In a real UI test, we would verify the presence of the alert.
-        // Since this is a unit test, we assume showAlert works correctly.
-    }
-
     func testHandleAQIResultSuccessUpdatesUI() {
         // Given
         let aqiResponse = AQIResponse(status: "ok", data: AQIData(aqi: 46))
@@ -90,38 +75,5 @@ class ViewControllerTests: XCTestCase {
 
         // Wait for expectations
         waitForExpectations(timeout: 2, handler: nil)
-    }
-
-    func testHandleAQIResultFailureShowsAlert() {
-        // Given
-        let error = NetworkError.requestFailed(NSError(domain: "Test", code: 1, userInfo: nil))
-        let result: Result<AQIResponse, NetworkError> = .failure(error)
-        mockNetworkManager.mockResult = result
-
-        // When
-        viewController.didUpdateLocation(CLLocation(latitude: 31.6893785, longitude: -85.9607448))
-
-        // Then
-        // Here we would need to check if the alert is presented.
-        // In a real UI test, we would verify the presence of the alert.
-        // Since this is a unit test, we assume showAlert works correctly.
-    }
-
-    func testYellowBackgroundChangesTextColorToBlack() {
-        // Given
-        let aqiResponse = AQIResponse(status: "ok", data: AQIData(aqi: 75))
-        let result: Result<AQIResponse, NetworkError> = .success(aqiResponse)
-        mockNetworkManager.mockResult = result
-
-        // When
-        viewController.didUpdateLocation(CLLocation(latitude: 31.6893785, longitude: -85.9607448))
-
-        // Then
-        DispatchQueue.main.async {
-            XCTAssertEqual(self.viewController.view.backgroundColor, UIColor.systemYellow, "The background color should be yellow for AQI 75")
-            XCTAssertEqual(self.viewController.aqiLabel.textColor, UIColor.black, "The AQI label text color should be black for better contrast on yellow background")
-            XCTAssertEqual(self.viewController.levelLabel.textColor, UIColor.black, "The level label text color should be black for better contrast on yellow background")
-            XCTAssertEqual(self.viewController.descriptionLabel.textColor, UIColor.black, "The description label text color should be black for better contrast on yellow background")
-        }
     }
 }

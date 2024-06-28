@@ -139,15 +139,9 @@ class ViewController: UIViewController, LocationManagerDelegate {
     private func updateUI(with aqiInfo: AQIInfo) {
         DispatchQueue.main.async {
             self.view.backgroundColor = aqiInfo.backgroundColor
-            if aqiInfo.backgroundColor == .systemYellow {
-                self.aqiLabel.textColor = .black
-                self.levelLabel.textColor = .black
-                self.descriptionLabel.textColor = .black
-            } else {
-                self.aqiLabel.textColor = .white
-                self.levelLabel.textColor = .white
-                self.descriptionLabel.textColor = .white
-            }
+            self.aqiLabel.textColor = .white
+            self.levelLabel.textColor = .white
+            self.descriptionLabel.textColor = .white
             self.aqiLabel.text = "\(aqiInfo.aqi)"
             self.levelLabel.text = aqiInfo.level
             self.descriptionLabel.text = aqiInfo.description
