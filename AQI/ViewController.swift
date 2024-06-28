@@ -16,10 +16,10 @@ struct AQIInfo {
 }
 
 class ViewController: UIViewController, LocationManagerDelegate {
-    private var locationManager: LocationManager?
-    private let networkManager = NetworkManager.shared
+    var locationManager: LocationManager?
+    private let networkManager: NetworkManager
     
-    private let aqiLabel: UILabel = {
+    let aqiLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 64, weight: .bold)
@@ -28,7 +28,7 @@ class ViewController: UIViewController, LocationManagerDelegate {
         return label
     }()
     
-    private let levelLabel: UILabel = {
+    let levelLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
@@ -37,7 +37,7 @@ class ViewController: UIViewController, LocationManagerDelegate {
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
+    let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
@@ -47,10 +47,27 @@ class ViewController: UIViewController, LocationManagerDelegate {
         return label
     }()
     
+    init(networkManager: NetworkManager = NetworkManager()) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.networkManager = NetworkManager()
+        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupLocationManager()
+        locationManager?.requestLocation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        locationManager?.requestLocation()
     }
     
     private func setupLocationManager() {

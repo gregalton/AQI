@@ -48,7 +48,7 @@ class NetworkManagerTests: XCTestCase {
             return (response, data)
         }
         
-        let result = await NetworkManager.shared.fetchAQI(latitude: 31.6893785, longitude: -85.9607448)
+        let result = await NetworkManager().fetchAQI(latitude: 31.6893785, longitude: -85.9607448)
         
         switch result {
         case .success(let aqiResponse):
@@ -64,7 +64,7 @@ class NetworkManagerTests: XCTestCase {
             return (response, Data())
         }
         
-        let result = await NetworkManager.shared.fetchAQI(latitude: 31.6893785, longitude: -85.9607448)
+        let result = await NetworkManager().fetchAQI(latitude: 31.6893785, longitude: -85.9607448)
         
         switch result {
         case .success:

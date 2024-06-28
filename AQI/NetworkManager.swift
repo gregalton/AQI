@@ -24,10 +24,7 @@ struct AQIData: Codable {
 }
 
 class NetworkManager {
-    static let shared = NetworkManager()
     private let token = "3d4166dda9447ad124f74e772dcbc1685dada8b5"
-    
-    private init() {}
     
     func fetchAQI(latitude: Double, longitude: Double) async -> Result<AQIResponse, NetworkError> {
         let urlString = "https://api.waqi.info/feed/geo:\(latitude);\(longitude)/?token=\(token)"
