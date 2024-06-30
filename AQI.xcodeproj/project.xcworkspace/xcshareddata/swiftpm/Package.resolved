@@ -1,0 +1,15 @@
+{
+  "originHash" : "169ad3f8120b2711e93339cde695111704ce21d3d013687fa3a939283457938b",
+  "pins" : [
+    {
+      "identity" : "ganetworkmonitor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gregalton/GANetworkMonitor.git",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "9dfdef64fa1ddf4b36f0729d6d4eee6f356bf117"
+      }
+    }
+  ],
+  "version" : 3
+}

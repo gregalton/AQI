@@ -12,6 +12,7 @@ enum NetworkError: Error {
     case requestFailed(Error)
     case invalidResponse
     case decodingError(Error)
+    case unknown
 }
 
 struct AQIResponse: Codable {
@@ -26,28 +27,25 @@ struct AQIData: Codable {
 class NetworkManager {
     private let token = "3d4166dda9447ad124f74e772dcbc1685dada8b5"
     
-    func fetchAQI(latitude: Double, longitude: Double) async -> Result<AQIResponse, NetworkError> {
-        let urlString = "https://api.waqi.info/feed/geo:\(latitude);\(longitude)/?token=\(token)"
+    func fetchAQI(latitude: Double, longitude: Double) async -> Result<AQIResponse, NetworkError>  {
+        let urlString = "https://api.waqi.info/feed/geo:\(latitude);\(longitude)/?token=3d4166dda9447ad124f74e772dcbc1685dada8b5"
         
         guard let url = URL(string: urlString) else {
             return .failure(.invalidURL)
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
-            
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                return .failure(.invalidResponse)
-            }
-            
-            do {
-                let aqiResponse = try JSONDecoder().decode(AQIResponse.self, from: data)
-                return .success(aqiResponse)
-            } catch {
-                return .failure(.decodingError(error))
-            }
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let aqiResponse = try JSONDecoder().decode(AQIResponse.self, from: data)
+            return .success(aqiResponse)
         } catch {
-            return .failure(.requestFailed(error))
+            if let error = error as? URLError {
+                return .failure(.requestFailed(error))
+            } else if let error = error as? DecodingError {
+                return .failure(.decodingError(error))
+            } else {
+                return .failure(.unknown)
+            }
         }
     }
 }

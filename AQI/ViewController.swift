@@ -18,6 +18,8 @@ struct AQIInfo {
 class ViewController: UIViewController, LocationManagerDelegate {
     var locationManager: LocationManager?
     private let networkManager: NetworkManager
+    var currentLocation: CLLocation
+    var result: Result<AQIResponse, NetworkError>
     
     let aqiLabel: UILabel = {
         let label = UILabel()
@@ -47,21 +49,22 @@ class ViewController: UIViewController, LocationManagerDelegate {
         return label
     }()
     
-    init(networkManager: NetworkManager = NetworkManager()) {
+    init(networkManager: NetworkManager, location: CLLocation, result: Result<AQIResponse, NetworkError>) {
         self.networkManager = networkManager
+        self.currentLocation = location
+        self.result = result
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        self.networkManager = NetworkManager()
-        super.init(coder: coder)
+        //self.networkManager = NetworkManager()
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupLocationManager()
+        handleAQIResult(result)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,10 +158,7 @@ class ViewController: UIViewController, LocationManagerDelegate {
     }
     
     func didUpdateLocation(_ location: CLLocation) {
-        Task {
-            let result = await networkManager.fetchAQI(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            handleAQIResult(result)
-        }
+
     }
     
     func didFailWithError(_ error: Error) {
